@@ -1,20 +1,8 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 
 export default function VsslCard() {
   const ref = useRef<HTMLAnchorElement>(null);
-  const [iconUrl, setIconUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetch("https://itunes.apple.com/lookup?id=6758864930")
-      .then((r) => r.json())
-      .then((data) => {
-        const url: string | undefined =
-          data?.results?.[0]?.artworkUrl512 ?? data?.results?.[0]?.artworkUrl100;
-        if (url) setIconUrl(url);
-      })
-      .catch(() => {});
-  }, []);
 
   function handleMouseEnter() {
     const el = ref.current;
@@ -34,18 +22,7 @@ export default function VsslCard() {
       rel="noopener noreferrer"
     >
       vssl
-      <span className="vssl-popup">
-        {iconUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={iconUrl} alt="vssl" className="vssl-app-icon" />
-        ) : (
-          <span className="vssl-icon-fallback">v</span>
-        )}
-        <span className="vssl-app-info">
-          <span className="vssl-app-name">vssl</span>
-          <span className="vssl-app-sub">Private Journal &amp; Diary</span>
-        </span>
-      </span>
+      <span className="vssl-text-tip">Private Journal &amp; Diary</span>
     </a>
   );
 }

@@ -27,6 +27,9 @@ export default function InstagramCard({ username }: Props) {
         </svg>
       </span>
       Instagram
+      <svg className="ig-strike" viewBox="0 0 120 14" preserveAspectRatio="none">
+        <path className="ig-strike-path" d="M 0 7 Q 30 3 60 7 Q 90 11 120 7" />
+      </svg>
     </a>
   );
 }
