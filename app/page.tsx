@@ -1,7 +1,25 @@
 import GitHubCard from "@/components/GitHubCard";
 import ShimmerLink from "@/components/ShimmerLink";
-import CompanyCard from "@/components/CompanyCard";
 import InstagramCard from "@/components/InstagramCard";
+import VsslCard from "@/components/VsslCard";
+
+const BLOGS = [
+  {
+    title: "Building vssl: notes on shipping a solo app",
+    date: "May 2025",
+    href: "#",
+  },
+  {
+    title: "Why fast UIs feel alive",
+    date: "Mar 2025",
+    href: "#",
+  },
+  {
+    title: "Getting more out of React Server Components",
+    date: "Jan 2025",
+    href: "#",
+  },
+];
 
 export default function Home() {
   return (
@@ -27,25 +45,16 @@ export default function Home() {
         </h1>
 
         <p style={{ marginBottom: "22px" }}>
-          I&apos;m a software engineer based out of Bangalore. Currently a
-          product engineer at{" "}
-          <CompanyCard
-            href="https://glance.com"
-            name="Glance"
-            role="Product Engineer"
-            sub="Glance · InMobi Group"
-            initial="G"
-          />
-          , and studied computer science at{" "}
-          <ShimmerLink href="https://www.iitr.ac.in">
-            IIT Roorkee
-          </ShimmerLink>
-          .
+          I&apos;m a software engineer based out of Bangalore. Currently an SDE1
+          at{" "}
+          <ShimmerLink href="https://glance.com">Glance</ShimmerLink>, and
+          studied computer science at{" "}
+          <ShimmerLink href="https://www.iitr.ac.in">IIT Roorkee</ShimmerLink>.
         </p>
 
         <p style={{ marginBottom: "22px" }}>
           Before that, I built cool projects and launched my own app called{" "}
-          <strong style={{ fontWeight: 600 }}>vssl</strong> on the App Store.
+          <VsslCard /> on the App Store.
         </p>
 
         <p style={{ marginBottom: "22px" }}>
@@ -62,7 +71,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <span className="x-icon">𝕏</span>
-            Twitter
+            X
             <svg className="strike-svg" viewBox="0 0 80 14" preserveAspectRatio="none">
               <path className="strike-path" d="M 0 7 Q 20 3 40 7 Q 60 11 80 7" />
             </svg>
@@ -70,9 +79,22 @@ export default function Home() {
           , see my work on{" "}
           <GitHubCard username="ritwikdurga" bio="building things" />
           , and find me on{" "}
-          <InstagramCard username="ritwikdurga" />
-          .
+          <InstagramCard username="ritwikdurga" />.
         </p>
+
+        <div style={{ marginTop: "44px" }}>
+          <p style={{ color: "#555" }}>I also write occasionally —</p>
+          <div className="blog-list">
+            {BLOGS.map((post) => (
+              <div key={post.href + post.title} className="blog-entry">
+                <a href={post.href} className="blog-title">
+                  {post.title}
+                </a>
+                <span className="blog-date">{post.date}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   );
