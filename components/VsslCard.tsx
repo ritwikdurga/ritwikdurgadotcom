@@ -34,12 +34,18 @@ export default function VsslCard() {
       rel="noopener noreferrer"
     >
       vssl
-      {iconUrl && (
-        <span className="vssl-icon-popup">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+      <span className="vssl-popup">
+        {iconUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img src={iconUrl} alt="vssl" className="vssl-app-icon" />
+        ) : (
+          <span className="vssl-icon-fallback">v</span>
+        )}
+        <span className="vssl-app-info">
+          <span className="vssl-app-name">vssl</span>
+          <span className="vssl-app-sub">Private Journal &amp; Diary</span>
         </span>
-      )}
+      </span>
     </a>
   );
 }

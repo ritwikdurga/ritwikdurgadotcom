@@ -4,21 +4,14 @@ import InstagramCard from "@/components/InstagramCard";
 import VsslCard from "@/components/VsslCard";
 
 const BLOGS = [
-  {
-    title: "Building vssl: notes on shipping a solo app",
-    date: "May 2025",
-    href: "#",
-  },
-  {
-    title: "Why fast UIs feel alive",
-    date: "Mar 2025",
-    href: "#",
-  },
-  {
-    title: "Getting more out of React Server Components",
-    date: "Jan 2025",
-    href: "#",
-  },
+  { title: "Building vssl: notes on shipping a solo app", date: "May 2025", href: "#" },
+  { title: "Why fast UIs feel alive", date: "Mar 2025", href: "#" },
+  { title: "Getting more out of React Server Components", date: "Jan 2025", href: "#" },
+];
+
+const PROJECTS = [
+  { title: "vssl — Private Journal & Diary", meta: "iOS · App Store", href: "https://apps.apple.com/us/app/vssl-private-journal-diary/id6758864930" },
+  { title: "ritwikdurga.com — this site", meta: "Next.js", href: "https://github.com/ritwikdurga/ritwikdurgadotcom" },
 ];
 
 export default function Home() {
@@ -29,10 +22,10 @@ export default function Home() {
         paddingTop: "clamp(80px, 12vw, 160px)",
         paddingLeft: "clamp(24px, 10vw, 148px)",
         paddingRight: "clamp(24px, 10vw, 148px)",
-        paddingBottom: "80px",
+        paddingBottom: "100px",
       }}
     >
-      <div style={{ maxWidth: "680px", width: "100%" }}>
+      <div style={{ maxWidth: "640px", width: "100%" }}>
         <h1
           style={{
             fontSize: "17px",
@@ -46,8 +39,7 @@ export default function Home() {
 
         <p style={{ marginBottom: "22px" }}>
           I&apos;m a software engineer based out of Bangalore. Currently an SDE1
-          at{" "}
-          <ShimmerLink href="https://glance.com">Glance</ShimmerLink>, and
+          at <ShimmerLink href="https://glance.com">Glance</ShimmerLink>, and
           studied computer science at{" "}
           <ShimmerLink href="https://www.iitr.ac.in">IIT Roorkee</ShimmerLink>.
         </p>
@@ -82,15 +74,35 @@ export default function Home() {
           <InstagramCard username="ritwikdurga" />.
         </p>
 
-        <div style={{ marginTop: "44px" }}>
-          <p style={{ color: "#555" }}>I also write occasionally —</p>
-          <div className="blog-list">
+        {/* Writing */}
+        <div style={{ marginTop: "48px" }}>
+          <p style={{ color: "#888", fontSize: "15px" }}>Writing</p>
+          <div className="inline-list">
             {BLOGS.map((post) => (
-              <div key={post.href + post.title} className="blog-entry">
-                <a href={post.href} className="blog-title">
-                  {post.title}
+              <div key={post.title} className="inline-list-entry">
+                <a href={post.href} className="inline-list-title">{post.title}</a>
+                <span className="inline-list-meta">{post.date}</span>
+              </div>
+            ))}
+          </div>
+          <a href="/blog" className="see-all-link">See all →</a>
+        </div>
+
+        {/* Projects */}
+        <div style={{ marginTop: "40px" }}>
+          <p style={{ color: "#888", fontSize: "15px" }}>Projects</p>
+          <div className="inline-list">
+            {PROJECTS.map((p) => (
+              <div key={p.title} className="inline-list-entry">
+                <a
+                  href={p.href}
+                  className="inline-list-title"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {p.title}
                 </a>
-                <span className="blog-date">{post.date}</span>
+                <span className="inline-list-meta">{p.meta}</span>
               </div>
             ))}
           </div>

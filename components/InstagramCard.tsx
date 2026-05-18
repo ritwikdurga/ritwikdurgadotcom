@@ -12,26 +12,21 @@ export default function InstagramCard({ username }: Props) {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <span className="instagram-icon-hover">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+      <span className="ig-float-icon" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#ig-grad-u)" />
+          <circle cx="12" cy="12" r="5" stroke="white" strokeWidth="2" fill="none" />
+          <circle cx="17.5" cy="6.5" r="1.5" fill="white" />
           <defs>
-            <linearGradient id="ig-grad" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#f09433"/>
-              <stop offset="25%" stopColor="#e6683c"/>
-              <stop offset="50%" stopColor="#dc2743"/>
-              <stop offset="75%" stopColor="#cc2366"/>
-              <stop offset="100%" stopColor="#bc1888"/>
+            <linearGradient id="ig-grad-u" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%" stopColor="#f09433" />
+              <stop offset="50%" stopColor="#dc2743" />
+              <stop offset="100%" stopColor="#bc1888" />
             </linearGradient>
           </defs>
-          <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#ig-grad)"/>
-          <circle cx="12" cy="12" r="5" stroke="white" strokeWidth="2"/>
-          <circle cx="17.5" cy="6.5" r="1.5" fill="white"/>
         </svg>
       </span>
       Instagram
-      <svg className="instagram-strike-svg" viewBox="0 0 120 14" preserveAspectRatio="none">
-        <path className="instagram-strike-path" d="M 0 7 Q 30 3 60 7 Q 90 11 120 7" />
-      </svg>
     </a>
   );
 }
