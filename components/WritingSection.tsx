@@ -2,11 +2,11 @@
 import { useState } from "react";
 
 const POSTS = [
-  { title: "Building vssl: notes on shipping a solo app", date: "May 2025", href: "#" },
+  { title: "On shipping vssl alone — and what I'd do differently", date: "May 2025", href: "#" },
   { title: "Why fast UIs feel alive", date: "Mar 2025", href: "#" },
-  { title: "Getting more out of React Server Components", date: "Jan 2025", href: "#" },
-  { title: "On making things that last", date: "Nov 2024", href: "#" },
-  { title: "Notes on building at Glance", date: "Sep 2024", href: "#" },
+  { title: "Valorant and the design of feedback loops", date: "Jan 2025", href: "#" },
+  { title: "What 200M lock screens taught me about attention", date: "Nov 2024", href: "#" },
+  { title: "The spring on a dismiss gesture", date: "Sep 2024", href: "#" },
 ];
 
 const INITIAL = 3;

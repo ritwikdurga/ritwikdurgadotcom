@@ -4,16 +4,19 @@ import InstagramCard from "@/components/InstagramCard";
 import VsslCard from "@/components/VsslCard";
 import WritingSection from "@/components/WritingSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import LightSwitch from "@/components/LightSwitch";
 
 export default function Home() {
   return (
+    <>
+      <LightSwitch />
     <main
       style={{
         minHeight: "100vh",
-        paddingTop: "clamp(72px, 10vw, 140px)",
-        paddingLeft: "clamp(24px, 10vw, 148px)",
-        paddingRight: "clamp(24px, 6vw, 80px)",
-        paddingBottom: "100px",
+        paddingTop: "clamp(48px, 6vw, 80px)",
+        paddingLeft: "clamp(24px, 8vw, 120px)",
+        paddingRight: "clamp(24px, 5vw, 72px)",
+        paddingBottom: "80px",
       }}
     >
       <div className="page-layout">
@@ -30,26 +33,26 @@ export default function Home() {
             Ritwik Durga
           </h1>
 
-          <p style={{ marginBottom: "22px" }}>
-            I&apos;m a software engineer based out of Bangalore. Currently an
-            SDE1 at{" "}
-            <ShimmerLink href="https://glance.com">Glance</ShimmerLink>, and
-            studied computer science at{" "}
+          <p style={{ marginBottom: "20px" }}>
+            I&apos;m a software engineer in Bangalore — SDE1 at{" "}
+            <ShimmerLink href="https://glance.com">Glance</ShimmerLink>, building
+            for hundreds of millions of lock screen users. CS from{" "}
             <ShimmerLink href="https://www.iitr.ac.in">IIT Roorkee</ShimmerLink>.
           </p>
 
-          <p style={{ marginBottom: "22px" }}>
-            Before that, I built cool projects and launched my own app called{" "}
-            <VsslCard /> on the App Store.
+          <p style={{ marginBottom: "20px" }}>
+            I obsess over the small things: the spring on a dismiss gesture, the
+            easing on a state change, the moment an animation makes something feel
+            inevitable. I also play too much Valorant.
           </p>
 
-          <p style={{ marginBottom: "22px" }}>
-            I love the craft behind making user interfaces look nice, feel great
-            to use, and making them blazingly fast.
+          <p style={{ marginBottom: "20px" }}>
+            On the side, I built and shipped <VsslCard /> — a private journal app
+            now on the App Store.
           </p>
 
           <p>
-            Reach out to me at{" "}
+            Find me on{" "}
             <a
               href="https://x.com/0xRitwik"
               className="twitter-link"
@@ -62,9 +65,9 @@ export default function Home() {
                 <path className="strike-path" d="M 0 7 Q 20 3 40 7 Q 60 11 80 7" />
               </svg>
             </a>
-            , see my work on{" "}
+            , check out my code on{" "}
             <GitHubCard username="ritwikdurga" bio="building things" />
-            , and find me on{" "}
+            , and catch me on{" "}
             <InstagramCard username="ritwikdurga" />.
           </p>
         </div>
@@ -76,5 +79,6 @@ export default function Home() {
         </div>
       </div>
     </main>
+    </>
   );
 }

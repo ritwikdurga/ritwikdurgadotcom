@@ -10,49 +10,85 @@ html, body {
   height: 100%;
 }
 
+/* ── Theme variables ─────────────────────────────────── */
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --fg-muted: #888;
+  --fg-faint: #c0c0c0;
+  --border-subtle: #e8ecef;
+  --card-bg: #f6f8fa;
+  --card-border: #d8dee4;
+  --aside-label-color: #bbb;
+  --aside-meta-color: #c0c0c0;
+  --shimmer-color: #1a1a1a;
+  --expand-btn-color: #ccc;
+  --expand-btn-hover-color: #666;
+  --string-color: #d0d0d0;
+  --knob-color: #b8b8b8;
+}
+
+[data-theme="dark"] {
+  --bg: #0e0e0e;
+  --fg: #d6d6d6;
+  --fg-muted: #666;
+  --fg-faint: #2a2a2a;
+  --border-subtle: #1e1e1e;
+  --card-bg: #181818;
+  --card-border: #282828;
+  --aside-label-color: #363636;
+  --aside-meta-color: #363636;
+  --shimmer-color: #d6d6d6;
+  --expand-btn-color: #363636;
+  --expand-btn-hover-color: #888;
+  --string-color: #2c2c2c;
+  --knob-color: #3c3c3c;
+}
+
 body {
-  background: #ffffff;
+  background: var(--bg);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  color: #1a1a1a;
+  color: var(--fg);
   font-size: 17px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.35s ease, color 0.35s ease;
 }
 
-/* ── Two-column page layout ───────────────────────── */
+/* ── Two-column page layout ──────────────────────────── */
 .page-layout {
   display: grid;
-  grid-template-columns: 1fr 240px;
-  gap: 72px;
-  max-width: 880px;
+  grid-template-columns: 1fr 280px;
+  gap: 60px;
+  max-width: 960px;
   width: 100%;
   align-items: start;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 700px) {
   .page-layout {
     grid-template-columns: 1fr;
     gap: 48px;
   }
 }
 
-/* ── Shimmer (IIT Roorkee + Glance + vssl) ───────── */
+/* ── Shimmer (IIT Roorkee + Glance + vssl) ───────────── */
 .shimmer-base {
   position: relative;
   display: inline-block;
   vertical-align: baseline;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--fg);
   text-decoration: none;
   background: linear-gradient(
     90deg,
-    #1a1a1a 0%,
-    #1a1a1a 35%,
+    var(--shimmer-color) 0%,
+    var(--shimmer-color) 35%,
     #c9a227 47%,
     #f0c040 50%,
     #c9a227 53%,
-    #1a1a1a 65%,
-    #1a1a1a 100%
+    var(--shimmer-color) 65%,
+    var(--shimmer-color) 100%
   );
   background-size: 300% 100%;
   background-position: 150% center;
@@ -70,7 +106,7 @@ body {
   100% { background-position: -50% center; }
 }
 
-/* ── vssl text tooltip ────────────────────────────── */
+/* ── vssl text tooltip ───────────────────────────────── */
 .vssl-shimmer {
   position: relative;
 }
@@ -86,8 +122,8 @@ body {
   z-index: 100;
   font-size: 12px;
   font-weight: 400;
-  color: #888;
-  -webkit-text-fill-color: #888;
+  color: var(--fg-muted);
+  -webkit-text-fill-color: var(--fg-muted);
   white-space: nowrap;
   letter-spacing: 0.01em;
 }
@@ -97,12 +133,12 @@ body {
   transform: translateX(-50%) translateY(0);
 }
 
-/* ── X (formerly Twitter) ────────────────────────── */
+/* ── X (formerly Twitter) ────────────────────────────── */
 .twitter-link {
   position: relative;
   display: inline-block;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--fg);
   text-decoration: none;
   cursor: pointer;
 }
@@ -115,7 +151,7 @@ body {
   opacity: 0;
   font-size: 13px;
   font-weight: 900;
-  color: #1a1a1a;
+  color: var(--fg);
   transition: opacity 0.2s ease, transform 0.2s ease;
   pointer-events: none;
   line-height: 1;
@@ -154,12 +190,12 @@ body {
   to { stroke-dashoffset: 0; }
 }
 
-/* ── Instagram ────────────────────────────────────── */
+/* ── Instagram ────────────────────────────────────────── */
 .instagram-link {
   position: relative;
   display: inline-block;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--fg);
   text-decoration: none;
   cursor: pointer;
 }
@@ -207,12 +243,12 @@ body {
   animation: drawStrike 0.4s ease forwards;
 }
 
-/* ── Shared hover-card base ───────────────────────── */
+/* ── Shared hover-card base ──────────────────────────── */
 .hover-card-link {
   position: relative;
   display: inline-block;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--fg);
   text-decoration: none;
   cursor: pointer;
 }
@@ -222,13 +258,13 @@ body {
   bottom: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%) translateY(6px);
-  background: #f6f8fa;
-  border: 1px solid #d8dee4;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 10px;
   padding: 14px 16px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition: opacity 0.18s ease, transform 0.18s ease, background 0.35s ease, border-color 0.35s ease;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   z-index: 100;
   white-space: nowrap;
@@ -240,7 +276,7 @@ body {
   pointer-events: auto;
 }
 
-/* ── GitHub card ──────────────────────────────────── */
+/* ── GitHub card ──────────────────────────────────────── */
 .github-card-inner {
   width: 420px;
   white-space: normal;
@@ -265,7 +301,7 @@ body {
   align-items: center;
   gap: 12px;
   padding-top: 12px;
-  border-top: 1px solid #e8ecef;
+  border-top: 1px solid var(--border-subtle);
 }
 
 .avatar {
@@ -300,13 +336,13 @@ body {
 .profile-handle {
   font-size: 13px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--fg);
   line-height: 1.3;
 }
 
 .profile-bio {
   font-size: 12px;
-  color: #888;
+  color: var(--fg-muted);
   margin-top: 1px;
   line-height: 1.3;
   white-space: nowrap;
@@ -314,17 +350,14 @@ body {
   text-overflow: ellipsis;
 }
 
-/* ── Right-column sections ────────────────────────── */
-.aside-section {
-  /* stacks naturally */
-}
-
+/* ── Right-column sections ───────────────────────────── */
 .aside-label {
   font-size: 13px;
-  color: #bbb;
+  color: var(--aside-label-color);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-bottom: 12px;
+  transition: color 0.35s ease;
 }
 
 .aside-entry {
@@ -337,25 +370,35 @@ body {
 .aside-title {
   font-size: 14px;
   font-weight: 400;
-  color: #1a1a1a;
+  color: var(--fg);
   text-decoration: none;
   line-height: 1.45;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.15s ease;
   display: inline;
+  transition: color 0.15s ease;
 }
 
-.aside-title:hover {
-  border-bottom-color: #ccc;
+.aside-title::after {
+  content: ' →';
+  display: inline;
+  opacity: 0;
+  font-size: 10px;
+  color: var(--fg-muted);
+  transition: opacity 0.18s ease, color 0.35s ease;
+  letter-spacing: 0;
+}
+
+.aside-entry:hover .aside-title::after {
+  opacity: 1;
 }
 
 .aside-meta {
   font-size: 12px;
-  color: #c0c0c0;
+  color: var(--aside-meta-color);
   line-height: 1;
+  transition: color 0.35s ease;
 }
 
-/* ── Smooth expand (grid-template-rows trick) ─────── */
+/* ── Smooth expand (grid-template-rows trick) ─────────── */
 .expand-anim {
   display: grid;
   grid-template-rows: 0fr;
@@ -376,7 +419,7 @@ body {
   padding: 0;
   margin-top: 2px;
   font-size: 12px;
-  color: #ccc;
+  color: var(--expand-btn-color);
   cursor: pointer;
   font-family: inherit;
   letter-spacing: 0.01em;
@@ -385,5 +428,89 @@ body {
 }
 
 .expand-btn:hover {
-  color: #666;
+  color: var(--expand-btn-hover-color);
+}
+
+/* ── Light switch ─────────────────────────────────────── */
+.light-switch {
+  position: fixed;
+  top: 0;
+  right: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 200;
+  user-select: none;
+  -webkit-user-select: none;
+  padding-bottom: 10px;
+}
+
+.switch-bulb {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--string-color);
+  flex-shrink: 0;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.switch-bulb.bulb-on {
+  background: #f5c94e;
+  box-shadow: 0 0 6px rgba(245, 201, 78, 0.8), 0 0 20px rgba(245, 201, 78, 0.3);
+}
+
+.switch-pull {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+}
+
+.switch-pull.spring-pull {
+  animation: cord-spring 0.65s ease forwards;
+}
+
+.switch-pull.spring-pull .switch-knob {
+  animation: knob-unscale 0.65s ease forwards;
+}
+
+.switch-cord {
+  width: 1px;
+  height: 48px;
+  background: var(--string-color);
+  transition: background 0.4s ease;
+}
+
+.switch-knob {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--knob-color);
+  transition: background 0.2s ease;
+}
+
+.light-switch:hover .switch-knob {
+  background: var(--fg-muted);
+}
+
+@keyframes cord-spring {
+  0%   { transform: scaleY(1); }
+  18%  { transform: scaleY(1.55); }
+  35%  { transform: scaleY(0.88); }
+  52%  { transform: scaleY(1.18); }
+  68%  { transform: scaleY(0.96); }
+  84%  { transform: scaleY(1.05); }
+  100% { transform: scaleY(1); }
+}
+
+/* counter-scale keeps knob circular while cord-spring distorts the container */
+@keyframes knob-unscale {
+  0%   { transform: scaleY(1); }
+  18%  { transform: scaleY(0.645); }
+  35%  { transform: scaleY(1.136); }
+  52%  { transform: scaleY(0.847); }
+  68%  { transform: scaleY(1.042); }
+  84%  { transform: scaleY(0.952); }
+  100% { transform: scaleY(1); }
 }
