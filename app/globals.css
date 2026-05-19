@@ -19,6 +19,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ── Two-column page layout ───────────────────────── */
+.page-layout {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 72px;
+  max-width: 880px;
+  width: 100%;
+  align-items: start;
+}
+
+@media (max-width: 680px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
 /* ── Shimmer (IIT Roorkee + Glance + vssl) ───────── */
 .shimmer-base {
   position: relative;
@@ -166,7 +183,6 @@ body {
   transform: translateX(-50%) scale(1);
 }
 
-/* curved SVG strikethrough — mirrors .twitter-link .strike-svg */
 .ig-strike {
   position: absolute;
   left: -2px;
@@ -298,53 +314,74 @@ body {
   text-overflow: ellipsis;
 }
 
-/* ── Writing / Projects sections ─────────────────── */
-.inline-list {
+/* ── Right-column sections ────────────────────────── */
+.aside-section {
+  /* stacks naturally */
+}
+
+.aside-label {
+  font-size: 13px;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.aside-entry {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 1px;
+  margin-bottom: 12px;
 }
 
-.inline-list-entry {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-
-.inline-list-title {
+.aside-title {
+  font-size: 14px;
+  font-weight: 400;
   color: #1a1a1a;
   text-decoration: none;
-  font-weight: 400;
-  font-size: 16px;
+  line-height: 1.45;
   border-bottom: 1px solid transparent;
   transition: border-color 0.15s ease;
-  flex-shrink: 1;
-  min-width: 0;
+  display: inline;
 }
 
-.inline-list-title:hover {
-  border-bottom-color: #c0c0c0;
+.aside-title:hover {
+  border-bottom-color: #ccc;
 }
 
-.inline-list-meta {
-  color: #bbb;
-  font-size: 13px;
-  white-space: nowrap;
-  flex-shrink: 0;
+.aside-meta {
+  font-size: 12px;
+  color: #c0c0c0;
+  line-height: 1;
+}
+
+/* ── Smooth expand (grid-template-rows trick) ─────── */
+.expand-anim {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.expand-anim.open {
+  grid-template-rows: 1fr;
+}
+
+.expand-anim > div {
+  overflow: hidden;
 }
 
 .expand-btn {
   background: none;
   border: none;
   padding: 0;
-  margin-top: 8px;
-  font-size: 13px;
-  color: #bbb;
+  margin-top: 2px;
+  font-size: 12px;
+  color: #ccc;
   cursor: pointer;
   font-family: inherit;
+  letter-spacing: 0.01em;
   transition: color 0.15s ease;
   display: block;
-  letter-spacing: 0.01em;
 }
 
 .expand-btn:hover {

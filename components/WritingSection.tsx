@@ -13,23 +13,34 @@ const INITIAL = 3;
 
 export default function WritingSection() {
   const [expanded, setExpanded] = useState(false);
-  const visible = expanded ? POSTS : POSTS.slice(0, INITIAL);
-  const hasMore = POSTS.length > INITIAL;
+  const shown = POSTS.slice(0, INITIAL);
+  const hidden = POSTS.slice(INITIAL);
 
   return (
-    <div style={{ marginTop: "48px" }}>
-      <p style={{ color: "#888", fontSize: "14px", marginBottom: "10px" }}>Writing</p>
-      <div className="inline-list">
-        {visible.map((post) => (
-          <div key={post.title} className="inline-list-entry">
-            <a href={post.href} className="inline-list-title">{post.title}</a>
-            <span className="inline-list-meta">{post.date}</span>
-          </div>
-        ))}
+    <div className="aside-section">
+      <p className="aside-label">Writing</p>
+      {shown.map((post) => (
+        <div key={post.title} className="aside-entry">
+          <a href={post.href} className="aside-title">{post.title}</a>
+          <span className="aside-meta">{post.date}</span>
+        </div>
+      ))}
+
+      {/* smooth height animation via grid-template-rows trick */}
+      <div className={`expand-anim${expanded ? " open" : ""}`}>
+        <div>
+          {hidden.map((post) => (
+            <div key={post.title} className="aside-entry">
+              <a href={post.href} className="aside-title">{post.title}</a>
+              <span className="aside-meta">{post.date}</span>
+            </div>
+          ))}
+        </div>
       </div>
-      {hasMore && (
+
+      {hidden.length > 0 && (
         <button className="expand-btn" onClick={() => setExpanded((e) => !e)}>
-          {expanded ? "show less" : `${POSTS.length - INITIAL} more`}
+          {expanded ? "show less" : `${hidden.length} more`}
         </button>
       )}
     </div>
