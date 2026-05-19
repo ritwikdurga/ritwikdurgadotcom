@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
+import { flushSync } from "react-dom";
 
-export default function LightSwitch() {
+export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
-  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("theme");
@@ -13,29 +13,37 @@ export default function LightSwitch() {
     }
   }, []);
 
-  function toggle() {
-    if (animating) return;
-    setAnimating(true);
+  function toggle(e: React.MouseEvent) {
     const next = !isDark;
-    setIsDark(next);
-    document.documentElement.setAttribute("data-theme", next ? "dark" : "light");
-    localStorage.setItem("theme", next ? "dark" : "light");
+    const x = e.clientX;
+    const y = e.clientY;
+
+    document.documentElement.style.setProperty("--clip-x", `${x}px`);
+    document.documentElement.style.setProperty("--clip-y", `${y}px`);
+
+    const apply = () => {
+      flushSync(() => setIsDark(next));
+      document.documentElement.setAttribute("data-theme", next ? "dark" : "light");
+      localStorage.setItem("theme", next ? "dark" : "light");
+    };
+
+    if (!("startViewTransition" in document)) {
+      apply();
+      return;
+    }
+
+    (document as Document & { startViewTransition: (fn: () => void) => void })
+      .startViewTransition(apply);
   }
 
   return (
-    <div
-      className="light-switch"
+    <button
+      className="theme-toggle"
       onClick={toggle}
-      title={isDark ? "Switch to light" : "Switch to dark"}
+      title={isDark ? "switch to light" : "switch to dark"}
+      aria-label="Toggle theme"
     >
-      <div className={`switch-bulb${!isDark ? " bulb-on" : ""}`} />
-      <div
-        className={`switch-pull${animating ? " spring-pull" : ""}`}
-        onAnimationEnd={() => setAnimating(false)}
-      >
-        <div className="switch-cord" />
-        <div className="switch-knob" />
-      </div>
-    </div>
+      {isDark ? "○" : "●"}
+    </button>
   );
 }

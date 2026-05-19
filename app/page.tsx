@@ -35,15 +35,15 @@ export default function Home() {
 
           <p style={{ marginBottom: "20px" }}>
             I&apos;m a software engineer in Bangalore — SDE1 at{" "}
-            <ShimmerLink href="https://glance.com">Glance</ShimmerLink>, building
-            for hundreds of millions of lock screen users. CS from{" "}
+            <ShimmerLink href="https://glance.com">Glance</ShimmerLink>, working
+            on the software that lives on your lock screen. CS from{" "}
             <ShimmerLink href="https://www.iitr.ac.in">IIT Roorkee</ShimmerLink>.
           </p>
 
           <p style={{ marginBottom: "20px" }}>
-            I obsess over the small things: the spring on a dismiss gesture, the
-            easing on a state change, the moment an animation makes something feel
-            inevitable. I also play too much Valorant.
+            I care about the feel of things: the spring on a dismiss gesture, the
+            easing on a state change, the moment something clicks just right. I
+            also play too much Valorant, which I&apos;m choosing to call research.
           </p>
 
           <p style={{ marginBottom: "20px" }}>
