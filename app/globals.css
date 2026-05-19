@@ -348,9 +348,9 @@ body {
 
 /* ── Right-column sections ───────────────────────────── */
 .aside-label {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--aside-label-color);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   margin-bottom: 14px;
   transition: color 0.35s ease;
@@ -364,13 +364,12 @@ body {
 }
 
 .aside-title {
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 400;
   color: var(--fg);
   text-decoration: none;
   line-height: 1.45;
   display: inline;
-  /* draw underline left→right on hover */
   background-image: linear-gradient(var(--fg), var(--fg));
   background-position: 0% 100%;
   background-repeat: no-repeat;
@@ -383,7 +382,7 @@ body {
 }
 
 .aside-meta {
-  font-size: 11.5px;
+  font-size: 13px;
   color: var(--aside-meta-color);
   line-height: 1;
   transition: color 0.35s ease;
@@ -425,20 +424,15 @@ body {
 /* ── Theme toggle ────────────────────────────────────── */
 .theme-toggle {
   position: fixed;
-  top: 22px;
+  top: 20px;
   right: 28px;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   background: none;
   border: none;
-  padding: 0;
-  font-size: 11px;
+  padding: 6px;
+  font-size: 13px;
   color: var(--fg-muted);
-  opacity: 0.28;
+  opacity: 0.55;
   transition: opacity 0.2s ease, color 0.35s ease;
   z-index: 200;
   font-family: inherit;
@@ -446,7 +440,7 @@ body {
 }
 
 .theme-toggle:hover {
-  opacity: 0.75;
+  opacity: 1;
 }
 
 /* ── View transition radial reveal ──────────────────── */
