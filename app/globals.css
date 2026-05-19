@@ -24,6 +24,7 @@ html, body {
   --shimmer-color: #1a1a1a;
   --expand-btn-color: #ccc;
   --expand-btn-hover-color: #666;
+  --red-curve-underline: url("data:image/svg+xml,%3Csvg viewBox='0 0 120 14' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 0 7 Q 30 3 60 7 Q 90 11 120 7' stroke='%23e53e3e' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 [data-theme="dark"] {
@@ -93,6 +94,29 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.shimmer-base::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 78%;
+  width: calc(100% + 6px);
+  height: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background-image: var(--red-curve-underline);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  transition: opacity 0.1s ease, transform 0.36s ease;
+}
+
+.shimmer-base:hover::after,
+.shimmer-base:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
 .shimmer-base.shimmer-active {
   animation: shimmer 1.4s ease forwards;
 }
@@ -113,8 +137,9 @@ body {
   left: 50%;
   transform: translateX(-50%) translateY(4px);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
   z-index: 100;
   font-size: 12px;
   font-weight: 400;
@@ -126,6 +151,7 @@ body {
 
 .vssl-shimmer:hover .vssl-text-tip {
   opacity: 1;
+  visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
 
@@ -249,6 +275,29 @@ body {
   cursor: pointer;
 }
 
+.hover-card-link::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 78%;
+  width: calc(100% + 6px);
+  height: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background-image: var(--red-curve-underline);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  transition: opacity 0.1s ease, transform 0.36s ease;
+}
+
+.hover-card-link:hover::after,
+.hover-card-link:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
 .hover-card {
   position: absolute;
   bottom: calc(100% + 12px);
@@ -259,8 +308,9 @@ body {
   border-radius: 10px;
   padding: 14px 16px;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.18s ease, transform 0.18s ease, background 0.35s ease, border-color 0.35s ease;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease, background 0.35s ease, border-color 0.35s ease;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   z-index: 100;
   white-space: nowrap;
@@ -268,6 +318,7 @@ body {
 
 .hover-card-link:hover .hover-card {
   opacity: 1;
+  visibility: visible;
   transform: translateX(-50%) translateY(0);
   pointer-events: auto;
 }
@@ -375,23 +426,27 @@ body {
   transition: color 0.35s ease;
 }
 
-/* curved arc that draws left-to-right; clip-path reveals the full arc
-   so the curve shape is preserved during the animation */
 .aside-title::after {
-  content: '';
+  content: "";
   position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 100%;
-  height: 8px;
-  border-bottom: 1.5px solid var(--fg);
-  border-radius: 0 0 50% 50%;
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.32s ease, border-color 0.35s ease;
+  left: -3px;
+  top: 78%;
+  width: calc(100% + 6px);
+  height: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background-image: var(--red-curve-underline);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  transition: opacity 0.1s ease, transform 0.36s ease;
 }
 
-.aside-entry:hover .aside-title::after {
-  clip-path: inset(0 0% 0 0);
+.aside-title:hover::after,
+.aside-title:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .aside-meta {
@@ -437,23 +492,53 @@ body {
 /* ── Theme toggle ────────────────────────────────────── */
 .theme-toggle {
   position: fixed;
-  top: 20px;
-  right: 28px;
+  top: 28px;
+  right: 32px;
   cursor: pointer;
   background: none;
-  border: none;
-  padding: 6px;
-  font-size: 13px;
-  color: var(--fg-muted);
+  border: 0;
+  padding: 0;
+  color: var(--fg);
   opacity: 0.55;
   transition: opacity 0.2s ease, color 0.35s ease;
   z-index: 200;
   font-family: inherit;
-  line-height: 1;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.theme-toggle::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 72%;
+  width: calc(100% + 6px);
+  height: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background-image: var(--red-curve-underline);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  transition: opacity 0.1s ease, transform 0.36s ease;
 }
 
 .theme-toggle:hover {
   opacity: 1;
+}
+
+.theme-toggle:hover::after,
+.theme-toggle:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
 }
 
 /* ── View transition radial reveal ──────────────────── */

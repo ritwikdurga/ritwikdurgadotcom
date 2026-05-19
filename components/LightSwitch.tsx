@@ -1,17 +1,34 @@
 "use client";
-import { useState, useEffect } from "react";
-import { flushSync } from "react-dom";
+import { useEffect, useSyncExternalStore } from "react";
+
+function subscribe(callback: () => void) {
+  window.addEventListener("themechange", callback);
+  window.addEventListener("storage", callback);
+
+  return () => {
+    window.removeEventListener("themechange", callback);
+    window.removeEventListener("storage", callback);
+  };
+}
+
+function getThemeSnapshot() {
+  return localStorage.getItem("theme") === "dark";
+}
+
+function getServerThemeSnapshot() {
+  return false;
+}
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
+  const isDark = useSyncExternalStore(
+    subscribe,
+    getThemeSnapshot,
+    getServerThemeSnapshot
+  );
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") {
-      setIsDark(true);
-      document.documentElement.setAttribute("data-theme", "dark");
-    }
-  }, []);
+    document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+  }, [isDark]);
 
   function toggle(e: React.MouseEvent) {
     const next = !isDark;
@@ -22,9 +39,9 @@ export default function ThemeToggle() {
     document.documentElement.style.setProperty("--clip-y", `${y}px`);
 
     const apply = () => {
-      flushSync(() => setIsDark(next));
       document.documentElement.setAttribute("data-theme", next ? "dark" : "light");
       localStorage.setItem("theme", next ? "dark" : "light");
+      window.dispatchEvent(new Event("themechange"));
     };
 
     if (!("startViewTransition" in document)) {
@@ -43,7 +60,7 @@ export default function ThemeToggle() {
       title={isDark ? "switch to light" : "switch to dark"}
       aria-label="Toggle theme"
     >
-      {isDark ? "○" : "●"}
+      {isDark ? "light" : "dark"}
     </button>
   );
 }

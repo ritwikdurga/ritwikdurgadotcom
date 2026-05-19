@@ -22,7 +22,9 @@ export default function VsslCard() {
       rel="noopener noreferrer"
     >
       vssl
-      <span className="vssl-text-tip">Private Journal &amp; Diary</span>
+      <span className="vssl-text-tip" aria-hidden="true">
+        Private Journal &amp; Diary
+      </span>
     </a>
   );
 }

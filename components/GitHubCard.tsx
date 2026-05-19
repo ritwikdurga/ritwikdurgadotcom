@@ -27,9 +27,14 @@ export default function GitHubCard({ username, bio }: Props) {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <span className="hover-card-link">
+    <a
+      href={`https://github.com/${username}`}
+      className="hover-card-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       GitHub
-      <span className="hover-card">
+      <span className="hover-card" aria-hidden="true">
         <span className="github-card-inner">
           <span className="contrib-grid">
             {GRID.map((level, i) => (
@@ -61,6 +66,6 @@ export default function GitHubCard({ username, bio }: Props) {
           </span>
         </span>
       </span>
-    </span>
+    </a>
   );
 }

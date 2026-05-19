@@ -17,6 +17,15 @@ export const metadata: Metadata = {
   description: "Software engineer",
 };
 
+const themeScript = `
+try {
+  document.documentElement.setAttribute(
+    "data-theme",
+    localStorage.getItem("theme") === "dark" ? "dark" : "light"
+  );
+} catch {}
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,7 +35,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
