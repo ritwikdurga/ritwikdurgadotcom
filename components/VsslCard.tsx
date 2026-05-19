@@ -16,15 +16,12 @@ export default function VsslCard() {
     <a
       ref={ref}
       href="https://apps.apple.com/us/app/vssl-private-journal-diary/id6758864930"
-      className="shimmer-base vssl-shimmer"
+      className="shimmer-base"
       onMouseEnter={handleMouseEnter}
       target="_blank"
       rel="noopener noreferrer"
     >
       vssl
-      <span className="vssl-text-tip" aria-hidden="true">
-        Private Journal &amp; Diary
-      </span>
     </a>
   );
 }

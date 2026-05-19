@@ -126,143 +126,133 @@ body {
   100% { background-position: -50% center; }
 }
 
-/* ── vssl text tooltip ───────────────────────────────── */
-.vssl-shimmer {
-  position: relative;
+.copy-line {
+  display: block;
 }
 
-.vssl-text-tip {
-  position: absolute;
-  bottom: calc(100% + 5px);
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
-  z-index: 100;
+/* Contacts */
+.contacts-section {
+  margin-top: 32px;
+}
+
+.contacts-title {
+  margin-bottom: 12px;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  line-height: 1.2;
+  text-transform: uppercase;
   color: var(--fg-muted);
-  -webkit-text-fill-color: var(--fg-muted);
-  white-space: nowrap;
-  letter-spacing: 0.01em;
 }
 
-.vssl-shimmer:hover .vssl-text-tip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* ── X (formerly Twitter) ────────────────────────────── */
-.twitter-link {
-  position: relative;
-  display: inline-block;
-  font-weight: 600;
-  color: var(--fg);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.twitter-link .x-icon {
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.6);
-  opacity: 0;
-  font-size: 13px;
-  font-weight: 900;
-  color: var(--fg);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  pointer-events: none;
-  line-height: 1;
-}
-
-.twitter-link:hover .x-icon {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-
-.twitter-link .strike-svg {
-  position: absolute;
-  left: -2px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: calc(100% + 4px);
-  height: 14px;
-  pointer-events: none;
-  overflow: visible;
-}
-
-.twitter-link .strike-path {
-  stroke: #e53e3e;
-  stroke-width: 2.2;
-  fill: none;
-  stroke-linecap: round;
-  stroke-dasharray: 120;
-  stroke-dashoffset: 120;
-}
-
-.twitter-link:hover .strike-path {
-  animation: drawStrike 0.35s ease forwards;
-}
-
-@keyframes drawStrike {
-  to { stroke-dashoffset: 0; }
-}
-
-/* ── Instagram ────────────────────────────────────────── */
-.instagram-link {
-  position: relative;
-  display: inline-block;
-  font-weight: 600;
-  color: var(--fg);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.ig-float-icon {
-  position: absolute;
-  top: -24px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.6);
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  pointer-events: none;
+.contacts-row {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   align-items: center;
-  justify-content: center;
-  line-height: 0;
 }
 
-.instagram-link:hover .ig-float-icon {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
+.social-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 7px 11px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--fg);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
 }
 
-.ig-strike {
+.social-link:hover,
+.social-link:focus-visible {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+  transform: translateY(-1px);
+}
+
+.social-link:focus-visible {
+  outline: 2px solid var(--fg-faint);
+  outline-offset: 3px;
+}
+
+.inline-socials {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.contacts-line {
+  margin-top: 28px;
+}
+
+.contact-text-link {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.contact-text-link::after {
+  content: "";
   position: absolute;
-  left: -2px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: calc(100% + 4px);
-  height: 14px;
+  left: -3px;
+  top: 78%;
+  width: calc(100% + 6px);
+  height: 12px;
   pointer-events: none;
-  overflow: visible;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background-image: var(--red-curve-underline);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  transition: opacity 0.1s ease, transform 0.36s ease;
 }
 
-.ig-strike-path {
-  stroke: #dc2743;
-  stroke-width: 2.2;
-  fill: none;
-  stroke-linecap: round;
-  stroke-dasharray: 150;
-  stroke-dashoffset: 150;
+.contact-text-link:hover::after,
+.contact-text-link:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
-.instagram-link:hover .ig-strike-path {
-  animation: drawStrike 0.4s ease forwards;
+.contact-text-link:focus-visible {
+  outline: none;
+}
+
+.brand-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  background: currentColor;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.brand-icon-x {
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/x.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/x.svg");
+}
+
+.brand-icon-instagram {
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/instagram.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/instagram.svg");
+}
+
+.brand-icon-github {
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/github.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/github.svg");
 }
 
 /* ── Shared hover-card base ──────────────────────────── */
@@ -296,6 +286,22 @@ body {
 .hover-card-link:focus-visible::after {
   opacity: 1;
   transform: scaleX(1);
+}
+
+.social-link.hover-card-link {
+  display: inline-flex;
+}
+
+.social-link.hover-card-link::after {
+  display: none;
+}
+
+.contacts-row .hover-card-link {
+  display: inline-flex;
+}
+
+.contacts-row .hover-card-link::after {
+  display: none;
 }
 
 .hover-card {

@@ -1,6 +1,4 @@
-import GitHubCard from "@/components/GitHubCard";
 import ShimmerLink from "@/components/ShimmerLink";
-import InstagramCard from "@/components/InstagramCard";
 import VsslCard from "@/components/VsslCard";
 import WritingSection from "@/components/WritingSection";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -33,44 +31,50 @@ export default function Home() {
             </h1>
 
             <p style={{ marginBottom: "22px" }}>
-              I&apos;m a software engineer based in Bangalore, currently an SDE1
-              at{" "}
-              <ShimmerLink href="https://glance.com">Glance</ShimmerLink>, where
-              I work on software for lock screen experiences. I studied computer
-              science at{" "}
-              <ShimmerLink href="https://www.iitr.ac.in">IIT Roorkee</ShimmerLink>.
+              <span className="copy-line">
+                I&apos;m a software engineer based in Bangalore, currently an
+                SDE1 at{" "}
+                <ShimmerLink href="https://glance.com">Glance</ShimmerLink>.
+              </span>
+              <span className="copy-line">
+                I completed my Bachelors in CS at{" "}
+                <ShimmerLink href="https://www.iitr.ac.in">IIT Roorkee</ShimmerLink>.
+              </span>
             </p>
 
             <p style={{ marginBottom: "22px" }}>
-              Before that, I spent a lot of time making side projects, including{" "}
-              <VsslCard />, a private journal app I launched on the App Store.
+              <span className="copy-line">
+                Apart from that, I spent a lot of time making side projects,
+              </span>
+              <span className="copy-line">
+                including my latest <VsslCard />, a private journal app I
+                launched on the App Store.
+              </span>
             </p>
 
             <p style={{ marginBottom: "22px" }}>
-              I care about interfaces that feel calm, fast, and considered:
-              clean layouts, smooth motion, and the small details that make
-              software feel good to use.
+              I love the craft behind making user interfaces look nice, feel
+              great to use, and making them blazingly fast.
             </p>
 
-            <p>
-              Reach out about work, product ideas, or anything you think I should
-              see at{" "}
+            <p className="contacts-line">
+              Elsewhere:{" "}
               <a
                 href="https://x.com/0xRitwik"
-                className="twitter-link"
+                className="contact-text-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="x-icon">𝕏</span>
                 X
-                <svg className="strike-svg" viewBox="0 0 80 14" preserveAspectRatio="none">
-                  <path className="strike-path" d="M 0 7 Q 20 3 40 7 Q 60 11 80 7" />
-                </svg>
-              </a>
-              , check out my code on{" "}
-              <GitHubCard username="ritwikdurga" bio="building things" />
-              , and catch me on{" "}
-              <InstagramCard username="ritwikdurga" />.
+              </a>,{" "}
+              <a
+                href="https://github.com/ritwikdurga"
+                className="contact-text-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>.
             </p>
           </div>
 

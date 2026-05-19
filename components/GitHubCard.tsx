@@ -29,11 +29,12 @@ export default function GitHubCard({ username, bio }: Props) {
   return (
     <a
       href={`https://github.com/${username}`}
-      className="hover-card-link"
+      className="social-link hover-card-link"
       target="_blank"
       rel="noopener noreferrer"
     >
-      GitHub
+      <span className="brand-icon brand-icon-github" aria-hidden="true" />
+      <span>GitHub</span>
       <span className="hover-card" aria-hidden="true">
         <span className="github-card-inner">
           <span className="contrib-grid">
